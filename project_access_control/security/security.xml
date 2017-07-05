@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="simbioz_theme_shortcuts_security" model="ir.model.access">
+            <field name="name">Simbioz Shortcuts</field>
+            <field name="group_id" ref=""/>
+            <field name="model_id" ref="model_simbioz_theme_shortcut"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record id="simbioz_theme_editor_security" model="ir.model.access">
+            <field name="name">Simbioz Theme Editor</field>
+            <field name="group_id" ref="base.menu_config"/>
+            <field name="model_id" ref="model_simbioz_theme_config"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
+</openerp>

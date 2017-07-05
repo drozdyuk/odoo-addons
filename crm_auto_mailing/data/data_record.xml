@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="mail_message_subtype_cam" model="mail.message.subtype">
+            <field name="name">Crm Auto Mailing</field>
+            <field name="sequence" eval="1"/>
+            <field name="res_model">crm.lead</field>
+            <field name="description">Crm Auto Mailing</field>
+            <field name="default" eval="False"/>
+        </record>
+    </data>
+</openerp>

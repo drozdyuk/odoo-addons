@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding= "utf-8"?>
+    <openerp>
+        <data>
+
+            <record id="view_project_form_members" model="ir.ui.view">
+                <field name="name">view.project.form.members</field>
+                <field name="model">project.project</field>
+                <field name="priority" eval="200"/>
+                <field name="inherit_id" ref="project.edit_project"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//page[@string='Team']" position="after">
+                        <page string="Team access rules" name="Team access rules">
+                            <field string="Team access rules" name="user_access_control_rules">
+                                <tree editable="bottom" create="false" delete="false">
+                                    <field name = "user_id" readonly="1"/>
+                                    <field name = "tasks_create"/>
+                                    <field name = "tasks_write"/>
+                                    <field name = "tasks_delete"/>
+                                    <field name = "issues_create"/>
+                                    <field name = "issues_write"/>
+                                    <field name = "issues_delete"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>
+
+                    <xpath expr="//field[@name='partner_id']" position="replace">
+                         <field name="partner_id" groups="base.group_sale_manager"/>
+                    </xpath>
+                </field>
+            </record>
+
+            <record id="project_access_control_rules_action" model= "ir.actions.act_window" >
+                <field name="name" >Project Access Control Rules</field >
+                <field name="type" >ir.actions.act_window</field>
+                <field name="res_model" >project.access.control.rules</field >
+                <field name="view_mode" >tree,kanban,form</field >
+                <field name="view_type" >form</field >
+                <field name="help" type= "html">
+                    <p class="oe_view_nocontent_create" >
+                        Click to define a new Project Access Control Rules.
+                    </p>
+                </field>
+			</record>
+
+            <record id= "project_access_control_rules_form_view" model= "ir.ui.view">
+                <field name="model">project.access.control.rules</field >
+                <field name="arch" type= "xml">
+                    <form>
+                        <group>
+                            <field name = "user_id"/>
+                            <field name = "project_id"/>
+                            <field name = "tasks_create"/>
+                            <field name = "tasks_write"/>
+                            <field name = "tasks_delete"/>
+                            <field name = "issues_create"/>
+                            <field name = "issues_write"/>
+                            <field name = "issues_delete"/>
+
+                        </group>
+                    </form>
+                </field>
+            </record>
+
+            <record id= "project_access_control_rules_tree_view" model= "ir.ui.view">
+                <field name="model">project.access.control.rules</field >
+                <field name="arch" type= "xml">
+                    <tree>
+                        <field name = "user_id"/>
+                        <field name = "project_id"/>
+                        <field name = "tasks_create"/>
+                        <field name = "tasks_write"/>
+                        <field name = "tasks_delete"/>
+                        <field name = "issues_create"/>
+                        <field name = "issues_write"/>
+                        <field name = "issues_delete"/>
+                    </tree>
+                </field>
+            </record>
+
+            <menuitem name="Access Control" id="project_access_control_base" parent="base.menu_main_pm"
+             sequence="60" />
+
+            <menuitem action= "project_access_control_rules_action" name="Access Control Rules" id="project_access_control_rules"
+                parent="project_access_control.project_access_control_base" sequence= "1" />
+
+        </data>
+    </openerp>

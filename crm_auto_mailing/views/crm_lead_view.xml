@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="crm_auto_mailing_crm_lead_form" model="ir.ui.view">
+            <field name="name">crm.auto.mailing.crm.lead.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Extra Info']" position="after">
+                    <page string="CRM Auto Mailing">
+                        <label for="scenario_start_date" string="Scenario Start Date"/>
+                        <field name="scenario_start_date" />
+                        <label for="auto_mailing_scenario" string="Scenario"/>
+                        <field name="auto_mailing_scenario" />
+                        <label for="stopped" string="Stopped"/>
+                        <field name="stopped" />
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!--<record id="lot_sill_tree" model="ir.ui.view">
+            <field name="name">lot.sill.tree</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="lot_sill_length" string="Length, m" />
+                    <field name="lot_sill_width" string="Width, m" />
+                    <field name="lot_sill_list_price" string="Sale Price" />
+                    <field name="lot_sill_standard_price" string="Cost Price" />
+                </xpath>
+            </field>
+        </record>-->
+
+    </data>
+</openerp>
