@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+            <record id="crm_mail_scenario_action" model= "ir.actions.act_window" >
+                <field name="name" >Scenarios</field >
+                <field name="type" >ir.actions.act_window</field>
+                <field name="res_model" >crm.mail.scenario</field >
+                <field name="view_mode" >tree,form</field >
+                <field name="view_type" >form</field >
+                <field name="help" type= "html">
+                    <p class="oe_view_nocontent_create" >
+                        Click to define a new Scenario.
+                    </p>
+                </field>
+			</record>
+
+            <record id= "crm_mail_scenario_form_view" model= "ir.ui.view">
+                <field name="model">crm.mail.scenario</field >
+                <field name="arch" type= "xml">
+                    <form>
+                        <group>
+                            <field name = "name" required="1"/>
+                            <field name = "scenario_action" widget = "one2many_list">
+                                <tree editable="top">
+                                    <field name="sequence" widget="handle"/>
+                                    <!--<field name="active"/>-->
+                                    <field name="name"/>
+                                    <field name="delay_value" />
+                                    <field name="delay_units" />
+                                    <field name="crm_mail_template" />
+                                </tree>
+                            </field>
+                        </group>
+                        <!--<notebook>
+                            <page name="tab" string="Tab Items">
+                                <field name="field_one2many_1" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name = "field_char_2"/>
+                                    </tree>
+                                </field>
+                              </page>
+                         </notebook>-->
+                    </form>
+                </field>
+            </record>
+
+            <record id= "crm_mail_scenario_tree_view" model= "ir.ui.view">
+                <field name="model">crm.mail.scenario</field >
+                <field name="arch" type= "xml">
+                    <tree>
+                        <field name = "name"/>
+                        <field name = "scenario_action" />
+                    </tree>
+                </field>
+            </record>
+
+            <record id="crm_mail_scenario_action_action" model= "ir.actions.act_window" >
+                <field name="name" >Scenarios Actions</field >
+                <field name="type" >ir.actions.act_window</field>
+                <field name="res_model" >crm.mail.scenario.action</field >
+                <field name="view_mode" >tree,form</field >
+                <field name="view_type" >form</field >
+                <field name="help" type= "html">
+                    <p class="oe_view_nocontent_create" >
+                        Click to define a new Action.
+                    </p>
+                </field>
+			</record>
+
+            <record id= "crm_mail_scenario_action_form_view" model= "ir.ui.view">
+                <field name="model">crm.mail.scenario.action</field >
+                <field name="arch" type= "xml">
+                    <form>
+                        <group>
+                            <field name = "name"/>
+                            <!--<field name = "active"/>-->
+                            <field name = "delay_value"/>
+                            <field name = "delay_units"/>
+                            <field name = "auto_server_action"/>
+                            <field name = "auto_server_action_filters"/>
+                            <field name = "server_action"/>
+                            <field name = "crm_mail_scenario_id"/>
+                            <field name = "crm_mail_template" />
+                        </group>
+                        <!--<notebook>
+                            <page name="tab" string="Tab Items">
+                                <field name="field_one2many_1" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name = "field_char_2"/>
+                                    </tree>
+                                </field>
+                              </page>
+                         </notebook>-->
+                    </form>
+                </field>
+            </record>
+
+            <record id= "crm_mail_scenario_action_tree_view" model= "ir.ui.view">
+                <field name="model">crm.mail.scenario.action</field >
+                <field name="arch" type= "xml">
+                    <tree>
+                        <field name = "name"/>
+                        <!--<field name = "active" />-->
+                        <field name = "delay_value" />
+                        <field name = "delay_units"/>
+                        <field name = "auto_server_action"/>
+                        <field name = "crm_mail_scenario_id"/>
+                        <field name = "crm_mail_template" />
+                    </tree>
+                </field>
+            </record>
+
+            <menuitem name="CRM Auto mailing"
+                id="menu_crm_auto_mailing"
+                parent="base.menu_base_partner" sequence= "1" />
+
+            <menuitem action="crm_mail_scenario_action" name="Scenarios"
+                id="menu_crm_mail_scenario"
+                parent="crm_auto_mailing.menu_crm_auto_mailing" sequence= "1" />
+
+            <menuitem action="crm_mail_scenario_action_action" name="Scenarios Actions"
+                id="menu_crm_mail_scenario_action"
+                parent="crm_auto_mailing.menu_crm_auto_mailing" sequence= "2" />
+    </data>
+</openerp>
